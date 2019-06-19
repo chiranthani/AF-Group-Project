@@ -1,0 +1,47 @@
+{
+  "name": "mern-curd-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^2.1.8",
+    "redux": "^4.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
+    "cloudinary": "^1.14.0",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "express-fileupload": "^1.1.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.4.22",
+    "multer": "^1.4.1",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-slideshow-image": "^1.1.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
