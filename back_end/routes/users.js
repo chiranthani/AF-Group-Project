@@ -22,7 +22,6 @@ router.post('/register', verify, async (req, res) => {
     
         //creating a new user
         const user = new User({
-            name: req.body.name,
             email: req.body.email,
             password: hashedPassword,
             role: req.body.role

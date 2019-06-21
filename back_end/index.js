@@ -5,9 +5,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 //Importing Routes
-//const authRoutes = require('./routes/auth');
-//const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
 const listRoutes = require('./routes/List.Routes');
+const lecturerRoutes = require('./routes/lecturers');
 
 dotenv.config();
 
@@ -29,9 +30,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //Route middlewares
-//app.use('/api/user/login', authRoutes);
-//app.use('/api/user', userRoutes);
+app.use('/api/user/login', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/list', listRoutes);
+app.use('/api/lecturer', lecturerRoutes);
 
 
 

@@ -1,3 +1,3 @@
 module.exports={
-    admin: ["/api/user"]
+    admin: ["/api/user", "/api/lecturer"],
 }

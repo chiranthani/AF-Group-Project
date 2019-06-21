@@ -1,25 +1,21 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    email: {
+    name: {
         type: String,
         required: true,
-        max:255
+        min:6
     },
-    password: {
+    ID_number: {
         type: String,
         required: true,
-        max: 1024,
-        min: 6
+        min:6
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    role: {
-        type: String,
-        enum: ["student", "lecturer", "admin"]
+    login_credentials: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
     }
+
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -8,7 +8,6 @@ const adminUser = async () => {
     hashedPassword = await bcrypt.hash("password", salt);
 
     var user = {
-        name: "Admin User",
         email: "admin@gmail.com",
         password: hashedPassword,
         role: "admin"
