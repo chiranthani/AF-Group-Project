@@ -1,7 +1,17 @@
-const mongoose = require ('../DBmodel');
-const list = mongoose.model('list');
-
+//const mongoose = require ('../DBmodel');
+const list = require('../models/list');
 var ListController = function(){
+
+	this.Insert = () => {
+		return new Promise((resolve, reject)=>{
+			list.save()
+			.then((data)=>{
+				resolve({status:200,message:data});
+			}).catch((err)=>{
+				reject({status:500,message:'not found'+err});
+			})
+		});
+	};
    
     this.getAll = () =>{
         return new Promise((resolve,reject)=>{

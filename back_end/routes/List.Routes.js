@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const ListController = require('./List.controller');
+const ListController = require('../controllers/List.controller');
+
+router.get('/hello', (req, res) => {
+    res.send("welcome");
+});
 
 router.get('/',(req,res)=>{
     ListController.getAll().then((data)=>{
@@ -13,6 +17,7 @@ router.post('/',(req,res)=>{
     ListController.Insert(req.body).then((data)=>{
         res.status(data.status).send(data.message);
     }).catch((err)=>{
+        console.log(err);
         res.status(err.status).send(err.message);
     });
 });
