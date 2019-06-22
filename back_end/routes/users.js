@@ -3,7 +3,19 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
+const nodemailer = require('nodemailer');
 const {registerValidation} = require('../validation');
+
+//get all users
+router.get('/', verify, async (req, res) => {
+    try{
+        const users = await User.find();
+        res.json(users);
+    }catch(err){
+        res.json({message: err});
+    }
+    
+});
 
 
 router.post('/register', verify, async (req, res) => {
@@ -32,6 +44,33 @@ router.post('/register', verify, async (req, res) => {
     
         }catch(err) {
             res.status(400).send(err);
+        }
+
+        //email login credentials for lecturers
+        if(req.body.role === 'lecturer'){
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASSWORD
+                }
+            });
+
+            const mailOptions = {
+                from: process.env.EMAIL,
+                to: req.body.email,
+                subject: 'Login info',
+                text: `user name: ${req.body.email} \n Password: ${req.body.password}`
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                console.log(error);
+                } else {
+                console.log('Email sent: ' + info.response);
+                }
+            });
+
         }
     });
   

@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 //Route middlewares
-app.use('/api/user/login', authRoutes);
+app.use('/api/user/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/list', listRoutes);
 app.use('/api/lecturer', lecturerRoutes);
