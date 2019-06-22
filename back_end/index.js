@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const listRoutes = require('./routes/List.Routes');
 const lecturerRoutes = require('./routes/lecturers');
+const studentRoutes = require('./routes/students');
 
 dotenv.config();
 
@@ -34,6 +35,7 @@ app.use('/api/user/login', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/list', listRoutes);
 app.use('/api/lecturer', lecturerRoutes);
+app.use('/api/student', studentRoutes);
 
 
 
