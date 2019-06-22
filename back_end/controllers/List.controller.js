@@ -1,5 +1,10 @@
+<<<<<<< HEAD:back_end/controllers/List.controller.js
+const list = require('../models/list');
+
+=======
 //const mongoose = require ('../DBmodel');
 const list = require('../models/list');
+>>>>>>> a7115365e78e49581d9ac2e393a1967b78726fb5:back_end/controllers/List.controller.js
 var ListController = function(){
 
 	this.Insert = () => {

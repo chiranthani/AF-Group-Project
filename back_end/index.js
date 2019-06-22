@@ -10,6 +10,10 @@ const userRoutes = require('./routes/users');
 const listRoutes = require('./routes/List.Routes');
 const lecturerRoutes = require('./routes/lecturers');
 const studentRoutes = require('./routes/students');
+const courseRoutes = require('./routes/Course.Routes');
+const subjectRoutes = require('./routes/Subject.Routes');
+const ModuleRoutes = require('./routes/Module.Routes');
+const MarksRoutes = require('./routes/Marks.Routes');
 
 dotenv.config();
 
@@ -32,11 +36,13 @@ app.use(bodyParser.json());
 
 //Route middlewares
 app.use('/api/user/auth', authRoutes);
+app.use('/api/module', ModuleRoutes);
+app.use('/api/marks', MarksRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/list', listRoutes);
 app.use('/api/lecturer', lecturerRoutes);
 app.use('/api/student', studentRoutes);
-
-
+app.use('/api/Course', courseRoutes);
+app.use('/api/Subject', subjectRoutes);
 
 app.listen(4000, () => console.log('Server up and running'));
