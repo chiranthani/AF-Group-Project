@@ -19,6 +19,14 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ["student", "lecturer", "admin"]
+    },
+    resetToken: {
+        type: String
+    },
+    newPassword: {
+        type: String,
+        max: 1024,
+        min: 6
     }
 });
 
