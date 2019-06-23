@@ -1,0 +1,39 @@
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<h3><a class="btn btn-secondary" href="/assignment"><i class="fa fa-plus"></i> Create New</a> Assignments</h3>
+<table class="table table-striped">
+    <thead>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <tr>
+        <th>Subject</th>
+        <th>Title</th>
+        <th>Description - Instructions</th>
+        <th>Due date</th>
+
+        <th> </th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each list}}
+            <tr>
+                <td>{{this.subjectName}}</td>
+                <td>{{this.title}}</td>
+                <td>{{this.desc}}</td>
+                <td>{{this.due_date}}</td>
+                <!--To edit and delete -->
+                <td>
+                    <a href="/assignment/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>&nbsp
+                </td>
+                <td>
+                    <a href="/assignment/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               </td>
+
+            </tr>
+
+        {{/each}}
+
+    </tbody>
+</table>
+
