@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<h3>
+    {{viewTitle}}
+</h3>
+
+
+<form action="/course" method="post" autocomplete="off">
+    <input type="hidden" name="_id" value="{{course._id}}">
+    <div class="form-group">
+        <label>Course code</label>
+        <input type="text" class="form-control" name="courseCode" value="{{course.courseCode}}"/>
+        <div class="text-danger">{{course.courseCodeError}}</div>
+    </div>
+
+    <div class="form-group">
+        <label>Course name</label>
+        <input type="text" class="form-control" name="courseName" value="{{course.courseName}}"/>
+        <div class="text-danger">{{course.courseNameError}}</div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Year</label>
+            <input type="text" class="form-control" placeholder="example : 3" name="year" value="{{course.year}}">
+            <div class="text-danger">{{course.yearError}}</div>
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>&nbsp&nbsp
+    <a class="btn btn-secondary" href="/course/list"><i class="fa fa-list-alt"></i> View All</a>
+
+    </div>
+
+</form>

@@ -1,0 +1,43 @@
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<h3><a class="btn btn-secondary" href="/timetbl"><i class="fa fa-plus"></i> Create New</a> Time Table</h3>
+<table class="table table-striped">
+    <thead>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <tr>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Subject</th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each list}}
+            <tr>
+                <td>{{this.date}}</td>
+                <td>{{this.from}}</td>
+                <td>{{this.to}}</td>
+                <td>{{this.subjectName}}</td>
+
+                <!--To edit and delete -->
+                <td>
+                    <a href="/timetbl/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>&nbsp
+                </td>
+                <td>
+                    <a href="/timetbl/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               </td>
+
+            </tr>
+
+        {{/each}}
+
+    </tbody>
+</table>
+
+
+<p>Updated on :
+    <script> document.write(new Date().toLocaleDateString()); </script>
+</p>

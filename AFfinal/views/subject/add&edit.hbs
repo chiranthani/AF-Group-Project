@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<h3>
+    {{viewTitle}}
+</h3>
+
+
+<form action="/subject" method="post" autocomplete="off">
+    <input type="hidden" name="_id" value="{{subject._id}}">
+    <div class="form-group">
+        <label>Subject code</label>
+        <input type="text" class="form-control" name="subjectCode" value="{{subject.subjectCode}}"/>
+        <div class="text-danger">{{subject.subjectCodeError}}</div>
+    </div>
+
+    <div class="form-group">
+        <label>Subject name</label>
+        <input type="text" class="form-control" name="subjectName" value="{{subject.subjectName}}"/>
+        <div class="text-danger">{{subject.subjectNameError}}</div>
+
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-info"><i class="fa fa-database"></i> Submit</button>&nbsp&nbsp
+    <a class="btn btn-secondary" href="/subject/list"><i class="fa fa-list-alt"></i> View All</a>
+
+    </div>
+
+</form>
