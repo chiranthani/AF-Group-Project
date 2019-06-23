@@ -14,10 +14,8 @@ let Marks = new mongoose.Schema({
 			},
 			mark:{
 				type: Number	
-			},
-			updatedMark:{
-				type:Number
 			}
+			
 		
 	
 });

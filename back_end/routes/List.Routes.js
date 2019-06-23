@@ -2,12 +2,6 @@ const express = require('express');
 const router = express.Router();
 const ListController = require('../controllers/List.controller');
 
-<<<<<<< HEAD:back_end/routes/List.Routes.js
-router.get('/hello', (req, res) => {
-    res.send("welcome");
-});
-=======
->>>>>>> a7115365e78e49581d9ac2e393a1967b78726fb5:back_end/routes/List.Routes.js
 
 router.get('/',(req,res)=>{
     ListController.getAll().then((data)=>{

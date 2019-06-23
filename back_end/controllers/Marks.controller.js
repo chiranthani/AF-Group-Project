@@ -1,4 +1,5 @@
 const Marks = require('../models/marks');
+const MarkSheet = require('../models/markSheetUpload');
 
 var MarksController = function(){
    
@@ -41,23 +42,49 @@ var MarksController = function(){
 	};
 	
 	// insert marks array of object
+		//pls check this function isn't correctly working
 	this.addData = (data) =>{
-        return new Promise((resolve,reject)=>{          
-			 console.log(data); // display array of object
-            //try the insertMany function but isn't working. (my mongodb version (3.0))
-			db.marks.save(data).then(()=>{
+        return new Promise((resolve,reject)=>{ 
+			var marks = JSON.stringify(data);
+			console.log(marks); // display array of object
+			
+			/*marks.save(data).then(()=>{
                 resolve({status:200, message:"successfully added"});
             }).catch((err)=>{
                 reject({status:200,message:"failed"+err});
-            });
+            });*/
+			
+			/*Document objArray = new Document();
+			objArray.append("_id", new ObjectId());
+			objArray.append("Array",(ArrayList<Document>) JSON.parse("data"));*/
+			//var marks = JSON.stringify(data);
+			//console.log(marks);
+			//_id: new ObjectId(),
+          //try the insertMany function but isn't working. (my mongodb version (3.0))
+		  marks.insert([{ 
+				
+				studentID:studentID,
+				moduleID:moduleID,
+				assignmentNo:assignmentNo,
+				mark:mark
+			  
+			}], function(error, data){
+					if(error){
+						reject({status:200,message:"failed"+err});
+					}else{
+						resolve({status:200, message:"successfully added"});
+					}
 
+				});	
         });
     };
 	
 	// update marks array of object
+	//pls check this function isn't correctly working
 	this.update = (data)=>{
         return new Promise((resolve,reject)=>{
-			console.log(data)
+			console.log(data);
+			var marks = JSON.stringify(data);
             marks.update([{$set:{data}}]).then(()=>{
                 resolve({status:200,message:'Marks updated successfully'});
             }).catch((err)=>{
@@ -66,6 +93,33 @@ var MarksController = function(){
         })
     };
 	
+	this.upload = (data)=>{
+        return new Promise((resolve,reject)=>{
+			console.log(data.name);
+			//Using the files to call upon the method to move that file to a folder
+			data.mv("markSheets/" + data.name, function(error){
+				if(error){
+					console.log("Couldn't upload the game file");
+					console.log(error);
+				}else{
+					console.log("Game file succesfully uploaded.");
+				}
+			});	//add to the database		
+				MarkSheet.create({
+					fileName: data.name	
+					
+				}, function(error, data){
+					if(error){
+						reject({status:200,message:"failed"+err});
+					}else{
+						resolve({status:200, message:"successfully added"});
+					}
+
+				});			
+	
+        })
+    };
+		
 	this.retrieveByID=(id)=>{
 			return new Promise ((resolve,reject)=>{
 				 console.log(id);
@@ -77,6 +131,6 @@ var MarksController = function(){
 				})
 			});
 		};
-
+  
 };
 module.exports = new MarksController();
