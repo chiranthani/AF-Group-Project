@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 app.use('/api/list', listRoutes);
 app.use('/api/module', ModuleRoutes);
 app.use('/api/marks', MarksRoutes);
-app.use('/api/user/login', authRoutes);
+app.use('/api/user/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/lecturer', lecturerRoutes);
 app.use('/api/student', studentRoutes);

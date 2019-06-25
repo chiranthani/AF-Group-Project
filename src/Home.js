@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import home from "./images/1.jpg";
 
 export default class Home extends Component {
   
@@ -17,7 +18,7 @@ export default class Home extends Component {
     return (
       <div>
 	  	
-		 <nav className="navbar">
+		 <nav className="navbar" align="center">
 			
 					<ul className="navbar nav mr-auto">
 						<li className="navbar-item">
@@ -43,6 +44,7 @@ export default class Home extends Component {
 					</ul>
 				
 			</nav>
+			<div align="center"><img src={home} width="780" height="540" /></div>
 	  </div>
     );
   }

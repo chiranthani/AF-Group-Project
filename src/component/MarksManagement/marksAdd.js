@@ -79,32 +79,36 @@ class marksAdd extends Component{
 			for (var i= 0;i< this.state.Lists.length; i++){
 			
 			var markset = ({
-				"studentID":studentID[i].value,
-				"moduleID": this.state.module,
-				"assignmentNo": parseInt(assignmentNo[i].value),
-				"mark": parseFloat(mark[i].value)
+					"studentID":studentID[i].value,
+					"moduleID": this.state.module,
+					"assignmentNo": parseInt(assignmentNo[i].value),
+					"mark": parseFloat(mark[i].value)
 				
 			})
-		//	var marksJSON = JSON.stringify(markset);
+			
 			
 				marks.push(markset);		
 		}
 		
-		//console.log(marks);
 		
             
        axios.post("http://localhost:4000/api/marks",marks).then((res)=>{
-            console.log(res.data)
+            console.log(res.data);
+			$("#btnClick1").show();
+			$("#field").hide();
+			
+			this.setState({
+				assingmentNo:'',
+				module:''
+			});
+			
 			alert("Added Successfully..!");
         }).catch(error => {
 			console.log(error);
 		});
-		this.setState({
-            assingmentNo:''
-		})
+		
 	}
-	
-	
+		
     render(){
 		const { Lists } = this.state;
         return(

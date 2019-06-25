@@ -5,13 +5,6 @@ const fileUpload = require('express-fileupload');
 const pdf = require('html-pdf');
 const pdfTemplate = require('../pdfFormat');
 
-router.get('/',(req,res)=>{
-    MarksController.getAll().then((data)=>{
-        res.status(data.status).send(data.message);
-    }).catch((err)=>{
-        res.status(err.status).send(err.message);
-    });
-});
 
 //sort the max assignmentNo value
 router.get('/assignmentNo/',(req,res)=>{
@@ -70,6 +63,7 @@ router.get('/answerFiles',(req,res)=>{
         res.status(err.status).send(err.message);
     });
 });
+
 //create PDF
 router.post('/create-pdf', (req, res) => {
 	//get the form body data and create sample rezultati pdf file. It is save the server
@@ -81,6 +75,14 @@ router.post('/create-pdf', (req, res) => {
   });
 });
 
+// notify message add the db
+router.post('/notifyAdd',(req,res)=>{
+    MarksController.addMessage(req.body).then((data)=>{
+        res.status(data.status).send(data.message);
+    }).catch((err)=>{
+        res.status(err.status).send(err.message);
+    });
+});
 
 router.get('/:id',(req,res)=>{
     let id = req.params.id;
@@ -90,5 +92,14 @@ router.get('/:id',(req,res)=>{
         res.status(err.status).send(err.message);
     });
 });
+
+router.get('/',(req,res)=>{
+    MarksController.getAll().then((data)=>{
+        res.status(data.status).send(data.message);
+    }).catch((err)=>{
+        res.status(err.status).send(err.message);
+    });
+});
+
 module.exports = router;
 

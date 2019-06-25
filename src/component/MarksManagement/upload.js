@@ -7,9 +7,15 @@ export default class upload extends Component{
 	constructor(props) {
     super(props);
 	this.onChangeHandler = this.onChangeHandler.bind(this);
+	this.onChangeMessage = this.onChangeMessage.bind(this);
+	this.onChangeFileName = this.onChangeFileName.bind(this);
 	this.onSubmit = this.onSubmit.bind(this);
+	this.buttonClick = this.buttonClick.bind(this);
+	
       this.state = {
-        selectedFile: null
+        selectedFile: null,
+		message:'',
+		fileName:''
       }
    
   }
@@ -19,7 +25,18 @@ export default class upload extends Component{
       loaded: 0,
     })
   }
-  
+  onChangeMessage(e){
+	  this.setState({
+      message: e.target.value
+     
+    })
+  }
+  onChangeFileName(e){
+	  this.setState({
+      fileName: e.target.value
+     
+    })
+  }
   componentDidMount(){
 	  $("#field").hide();
   }
@@ -39,6 +56,30 @@ export default class upload extends Component{
 			console.log(error);
 		});
 		
+	}
+	
+	buttonClick(e){
+		 e.preventDefault();
+		 var notifyMessage =({
+			 "fileName": this.state.fileName,
+			 "message" : this.state.message
+			 
+		 })
+		 axios.post("http://localhost:4000/api/marks/notifyAdd",notifyMessage).then((res)=>{
+            console.log(res.data);
+			$("#btnClick1").show();
+			$("#field").hide();
+			
+			this.setState({
+				fileName:'',
+				message:'',
+				selectedFile: null
+			});
+			
+			alert("Notify message added Successfully..!");
+        }).catch(error => {
+			console.log(error);
+		});
 	}
 	render(){
 	return(
@@ -65,7 +106,33 @@ export default class upload extends Component{
 			</form>
 			
 			<fieldset id='field' >
-			<p>Add Notifications</p>
+			<br></br>
+			<div><h3><b>Add Notifications Message</b></h3></div>
+			
+			<form onSubmit={this.buttonClick}>
+				<div className="form-group">
+						<label className="col-md-2 control-label">Enter File Name</label>
+						<div className="col-md-4">
+						 <input type="text" 
+							   className="form-control" 
+							   id="fileName" 
+							   onChange={this.onChangeFileName}
+							   name="fileName"/>
+						  </div> 
+						  </div>
+						  <div className="form-group">
+						<label className="col-md-2 control-label">Enter Message</label>
+						<div className="col-md-4">
+						 <input type="text" 
+							   className="form-control" 
+							   id="message" 
+							   onChange={this.onChangeMessage}
+							   name="message"/>
+						  </div> 
+						  </div>
+						  
+				<button type="submit" className="btn btn-primary">Add Notify Message</button>
+			</form>
 			 </fieldset>
 		</div>
 		

@@ -2,6 +2,7 @@ const Modules = require('../models/modules');
 
 var ModuleController = function(){
    
+   //get all modules in db
     this.getAll = () =>{
         return new Promise((resolve,reject)=>{
             Modules.find().then((data)=>{

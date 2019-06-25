@@ -6,7 +6,7 @@ import viewMarks from "./viewMarks";
 import marksAdd from "./marksAdd";
 import upload from "./upload";
 import uploadView from "./uploadView";
-import studentResultView from "./studentResultView"; 
+//import studentResultView from "./studentResultView"; 
 
 //marks management navbar routers
 class marks extends Component {
@@ -28,10 +28,7 @@ class marks extends Component {
 						<Link to="/upload" className="nav-link">Upload Marks Sheet</Link>
 						</li>
 						<li className="navbar-item">
-						<Link to="/uploadView" className="nav-link">view file</Link>
-						</li>
-						<li className="navbar-item">
-						<Link to="/studentResultView" className="nav-link">Student Result View</Link>
+						<Link to="/uploadView" className="nav-link">View uploaded Assignment Files</Link>
 						</li>
 						
 					</ul>
@@ -41,7 +38,7 @@ class marks extends Component {
 			<Route path="/marksAdd"  component={marksAdd}/>
 			<Route path="/upload"  component={upload}/>
 			<Route path="/uploadView"  component={uploadView}/>
-			<Route path="/studentResultView"  component={studentResultView}/>
+			
 			
 			</div>
 		</Router>
